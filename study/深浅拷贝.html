@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 浅拷贝：只复制其引用，新旧对象共用一块内存，原对象改变，新对象跟着改变
+    const clone = (obj) => {
+      const result = {}
+      for (const key in obj) {
+        if (Object.hasOwn(obj, key)) {
+          result[key] = obj[key]
+        }
+      }
+      return result
+    }
+    const obj = {
+      name: "tom",
+      age: 11,
+      interest: {
+        height: "3"
+      }
+    }
+    obj.interest.height = "1"
+    const copyObj = clone(obj)
+    console.log('[ copyObj ] >', copyObj)
+    // 深拷贝：拷贝的是整个对象，会重新开辟一块内存，原来的值改变不会影响原对象
+  </script>
+</body>
+
+</html>

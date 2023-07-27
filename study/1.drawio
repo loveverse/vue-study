@@ -1,0 +1,49 @@
+<mxfile host="65bd71144e">
+    <diagram id="INNGgLS8kiiMdDCmOZAw" name="第 1 页">
+        <mxGraphModel dx="399" dy="646" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="1600" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="5" value="应用层（存在http、ssh、ftp等协议）" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontColor=#8EF0D6;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="480" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="传输层（TCP/UDP,tcp有状态，数据发送顺序发，顺序收，udp面向无连接，只保证数据发送，不保证数据是否接收完整）" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="400" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="ip/tcp协议栈" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#e81717;fontStyle=1;fontSize=23;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="160" width="150" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="网际层（将mac地址解析成ip，形成大的局域网，即ip所在层）" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="320" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="链接层（也叫mac层，数据发包初始地，对应电脑中的mac地址）" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="240" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="osi七层模型" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=23;fontColor=#e81717;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="680" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="物理层：硬件设备，光纤，电缆等" style="rounded=0;html=1;shadow=1;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="760" width="240" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="数据链路层：对应链接层" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="800" width="240" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="网络层：对应网际层" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="840" width="240" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="传输层：tcp/udp数据传输" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontSize=12;fontColor=#FFFFFF;strokeColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="880" width="240" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="会话层：保持会话的连接状态" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="920" width="240" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="表示层：将标签解析成直观可看见的页面" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="960" width="240" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="应用层：http" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="1000" width="240" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

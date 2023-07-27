@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    "use strict";
+    // const object1 = {};
+
+    // Object.defineProperty(object1, 'property1', {
+    //   value: 42,
+    //   writable: true, // 是否可以对属性值更改
+    //   configurable: true, // 是否可以删除修改属性
+    //   enumerable: false,  // 是否可以枚举,
+
+    // });
+
+    // object1.property1 = 77;
+    // // Throws an error in strict mode
+    // console.log('[ ...obj ] >', {...object1})
+    // // Expected output: 42
+    // delete object1.property1
+    // console.log(object1.property1, object1);
+
+    // const obj = {};
+    // // 1. 使用 null 原型：没有继承的属性
+    // const descriptor = Object.create(null);
+    // descriptor.value = "static";
+
+    // // 默认情况下，它们不可枚举、不可配置、不可写
+    // Object.defineProperty(obj, "key", descriptor);
+
+    // // Object.freeze(obj)
+    // obj.__proto__.b = 3
+    // obj.key = 2
+    // obj.c = 4
+    // console.log('[ obj ] >', { ...obj }, obj)
+
+
+    const o = {}; // 创建一个新对象
+
+    // 通过 defineProperty 使用数据描述符添加对象属性的示例
+    Object.defineProperty(o, "a", {
+      value: 37,
+      writable: true,
+      enumerable: true,
+      configurable: true,
+    });
+    // 'a' 属性存在于对象 o 中，其值为 37
+
+    // 通过 defineProperty 使用访问器属性描述符添加对象属性的示例
+    let bValue = 38;
+    Object.defineProperty(o, "b", {
+      get() {
+        return bValue;
+      },
+      set(newValue) {
+        console.log('[ 赋值 ] >', newValue)
+        bValue = newValue;
+      },
+      // writable: true,
+      enumerable: true,
+      configurable: true,
+    });
+    setTimeout(() => {
+      o.b = 5; // 38
+    }, 1000);
+    console.warn(`\n\u001b[31m5\u001b[39m\n`)
+
+
+  </script>
+</body>
+
+</html>

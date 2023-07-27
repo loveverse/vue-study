@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // const cloneDeep = (obj) => {
+    //   const result = {}
+    //   for (const key in obj) {
+    //     if (obj.hasOwnProperty(key)) {
+    //       // console.log('[ 111 ] >', 111)
+    //       result[key] = cloneDeep(obj[key])
+    //     } else {
+    //       result[key] = obj[key]
+    //     }
+    //   }
+    // }
+    // const obj = {
+    //   name: {
+    //     a: "修改前"
+    //   },
+    //   age: 2
+    // }
+    // const copyObj = cloneDeep(obj)
+    // obj.name.a = "修改后"
+    // console.log(copyObj)
+
+    // let a = {
+    //   one: 1,
+    //   one1: {
+    //     two: 1
+    //   }
+    // }
+    // let b = { ...a }
+    // let c = a
+    // let d = JSON.parse(JSON.stringify(a))
+    // b.one = 2
+    // b.one1.two = 2
+    // console.log(a, b, c, d)
+    let b = {
+      a: 1,
+      b: {
+        c: {
+          d: 1,
+          a: [10, { a: 2 }],
+
+        }
+      },
+      c: function () {
+        console.log('[ 3 ] >', 3)
+      }
+    }
+    function isObject(s) {
+      return Object.prototype.toString.call(s).toLowerCase().slice(8, -1)
+    }
+    function a(obj) {
+      let objCopy = {}
+      for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          if (isObject(obj[key]) === 'object' || isObject(obj[key]) === 'array') {
+            objCopy[key] = a(obj[key])
+          } else {
+            objCopy[key] = obj[key]
+          }
+        }
+      }
+      return objCopy
+    }
+    let l = a(b)
+    l.a = 2
+    l.b.c.d = 3
+    l.b.c.a[1].a = 3
+    l.c = function () {
+      console.log('[ 4 ] >', 4)
+    }
+  </script>
+</body>
+
+</html>
