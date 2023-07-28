@@ -17,7 +17,7 @@ import {
   mergeOptions,
   defineReactive
 } from '../util/index'
-
+// vue上扩展的一些静态方法或属性
 export function initGlobalAPI (Vue: GlobalAPI) {
   // config
   const configDef = {}
@@ -29,6 +29,7 @@ export function initGlobalAPI (Vue: GlobalAPI) {
       )
     }
   }
+  // 在Vue上添加一个config静态属性
   Object.defineProperty(Vue, 'config', configDef)
 
   // exposed util methods.

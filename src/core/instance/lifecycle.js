@@ -138,12 +138,14 @@ export function lifecycleMixin (Vue: Class<Component>) {
   }
 }
 
+// 组件挂载的核心逻辑
 export function mountComponent (
   vm: Component,
   el: ?Element,
   hydrating?: boolean
 ): Component {
   vm.$el = el
+  // 检查Vue实例是否定义render方法
   if (!vm.$options.render) {
     vm.$options.render = createEmptyVNode
     if (process.env.NODE_ENV !== 'production') {
@@ -164,6 +166,7 @@ export function mountComponent (
       }
     }
   }
+  // 挂载前调用beforeMount
   callHook(vm, 'beforeMount')
 
   let updateComponent
@@ -194,6 +197,7 @@ export function mountComponent (
   // we set this to vm._watcher inside the watcher's constructor
   // since the watcher's initial patch may call $forceUpdate (e.g. inside child
   // component's mounted hook), which relies on vm._watcher being already defined
+  // 创建一个Watcher对象,用于监视组件的更新
   new Watcher(vm, updateComponent, noop, {
     before () {
       if (vm._isMounted && !vm._isDestroyed) {
@@ -205,7 +209,9 @@ export function mountComponent (
 
   // manually mounted instance, call mounted on self
   // mounted is called for render-created child components in its inserted hook
+  // vm.$vnode表示Vue实力的父虚拟Node,所以为null,则表示是根的Vue实例
   if (vm.$vnode == null) {
+    // 设置挂载成功状态,同时执行mounted
     vm._isMounted = true
     callHook(vm, 'mounted')
   }
