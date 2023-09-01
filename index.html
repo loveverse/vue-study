@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <h2 v-clock>{{a}}</h2>
+    <button @click="updateA">修改a</button>
+  </div>
+
+  <script src="./dist/vue.js"></script>
+  <script>
+    console.dir('[ Vue ] >', Vue)
+    new Vue({
+      el: ".wrapper",
+      data: {
+        a: "1"
+      },
+      methods: {
+        updateA() {
+          this.a = 2
+        }
+      },
+      mounted() {
+        console.log('[ this ] >', this)
+      }
+    })
+
+  </script>
+</body>
+
+</html>

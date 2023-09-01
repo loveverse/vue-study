@@ -37,7 +37,9 @@ Vue.prototype.$mount = function (
   if (!options.render) {
     let template = options.template
     if (template) {
+      // 判断挂载的节点是否是id，class
       if (typeof template === 'string') {
+        
         if (template.charAt(0) === '#') {
           template = idToTemplate(template)
           /* istanbul ignore if */
@@ -48,6 +50,7 @@ Vue.prototype.$mount = function (
             )
           }
         }
+        // 是否是节点类型
       } else if (template.nodeType) {
         template = template.innerHTML
       } else {

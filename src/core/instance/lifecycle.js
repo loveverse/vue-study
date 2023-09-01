@@ -209,7 +209,7 @@ export function mountComponent (
 
   // manually mounted instance, call mounted on self
   // mounted is called for render-created child components in its inserted hook
-  // vm.$vnode表示Vue实力的父虚拟Node,所以为null,则表示是根的Vue实例
+  // vm.$vnode表示Vue实例的父虚拟Node,所以为null,则表示是根的Vue实例
   if (vm.$vnode == null) {
     // 设置挂载成功状态,同时执行mounted
     vm._isMounted = true
