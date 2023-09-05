@@ -505,3 +505,4 @@ Funds donated via Patreon go directly to support Evan You's full-time work on Vu
 <h2 align="center">Backers via OpenCollective</h2>
 
 <a href="https://opencollective.com/vuejs#backers" target="_blank"><img src="https://opencollective.com/vuejs/backers.svg?width=890"></a>
+
