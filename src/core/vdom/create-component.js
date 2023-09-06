@@ -98,6 +98,13 @@ const componentVNodeHooks = {
 
 const hooksToMerge = Object.keys(componentVNodeHooks)
 
+// 创建的组件对象会执行到baseCtor.extend(Ctor)
+/* 
+  根据Ctor是否是组件对象，将其转化为组件的构造函数
+  处理异步组件，如果Ctor是异步组件函数，则等待组件解析完成
+  处理组件的数据data和props
+  如果是函数式组件，则创建函数式组建的vnode
+*/
 export function createComponent (
   Ctor: Class<Component> | Function | Object | void,
   data: ?VNodeData,
@@ -108,7 +115,7 @@ export function createComponent (
   if (isUndef(Ctor)) {
     return
   }
-
+  // 这里的baseCtor实际就是“initGlobalAPI”函数中的Vue
   const baseCtor = context.$options._base
 
   // plain options object: turn it into a constructor

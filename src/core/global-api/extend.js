@@ -16,6 +16,8 @@ export function initExtend (Vue: GlobalAPI) {
   /**
    * Class inheritance
    */
+  // 构造一个Vue的子类，同时在子组件上扩展一些属性，如options、全局API等
+  // 主要是继承父类的原型，同时在子类上定义了一些静态方法(extend、mixin、use)，以便子类可以继续扩展和混合
   Vue.extend = function (extendOptions: Object): Function {
     extendOptions = extendOptions || {}
     const Super = this
@@ -33,6 +35,7 @@ export function initExtend (Vue: GlobalAPI) {
     const Sub = function VueComponent (options) {
       this._init(options)
     }
+    // 原型继承，合并配置
     Sub.prototype = Object.create(Super.prototype)
     Sub.prototype.constructor = Sub
     Sub.cid = cid++
@@ -59,6 +62,7 @@ export function initExtend (Vue: GlobalAPI) {
 
     // create asset registers, so extended classes
     // can have their private assets too.
+    // 
     ASSET_TYPES.forEach(function (type) {
       Sub[type] = Super[type]
     })

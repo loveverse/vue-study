@@ -16,3 +16,20 @@
 ### 渲染流程图
 ![]( https://note.loveverse.top/static/dcfcceda8b8e255a4458d60fd9384ad742926d83.png)
 
+## 组件化
+- 创建组件的主要模块在`core/vdom/create-component`中，定义了一些在组件初始化、更新、销毁的钩子函数
+- 编写组件时，通常都是创建一个普通对象，实际是`createComponent`里`baseCtor.extend(Ctor)`,其中baseCtor实际上就是Vue，在`core/global-api/index`中有这段逻辑 
+
+  ```js
+  Vue.options._base = Vue
+  ```
+这里的`Vue.options`与`createComponent`取的是`context.$options`,实际上在`core/instance/init`中将Vue上的一些option扩展到了`vm.$options`。初始化component类型的vnode过程中实现了几个钩子函数。
+- `installComponentHooks`安装组件钩子函数,整个过程是把`componentVNodeHooks`合并到`data.hook`中。在合并过程中，如果某个时机的钩子已经存在`data.hook`中，则执行mergeHook做合并，也就是依次执行两个钩子函数。
+- 实例化vnode，通过new VNode实例化一个vnode并返回，与普通元素节点的vnode不同，组件vnode没有children
+
+### patch
+- 通过createComponent创建了组件vnode后，会走到`vm._update`,通过`vm.__patch__`将vnode转换为真正的dom节点。
+- patch过程会调用`core/vdom/patch`中`createElm`创建元素节点，会判断createComponent返回值，如果vnode是一个组件vnode，条件会满足，并且得到i就是init钩子函数，init定义在`core/vdom/create-component`中。init主要是通过`createComponentInstanceForVnode`创建一个Vue的实例，然后调用$mount方法挂载子组件。其中`vnode.componentOptions.Ctor`对应的就是子组件的构造函数。它实际是继承于Vue的一个构造器Sub，也就是`new Sub`，组件实例化实际就是在这个时机执行的。`core/instance/init`会执行_init方法。
+
+
+  
