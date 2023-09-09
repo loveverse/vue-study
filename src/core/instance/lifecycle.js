@@ -18,6 +18,7 @@ import {
   invokeWithErrorHandling
 } from '../util/index'
 
+// 当前上下文的Vue实例
 export let activeInstance: any = null
 export let isUpdatingChildComponent: boolean = false
 
