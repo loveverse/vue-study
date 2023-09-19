@@ -12,7 +12,7 @@
 - 入口在`core/index.js`,这里主要看`initGlobalAPI`和引入的`instance/index`文件
 - `instance/index`文件主要是将多个功能混入到 Vue 实例中,`Vue`实际上是一个类,只能通过`new`关键字初始化
 - `initGlobalAPI`主要在`Vue`上扩展一些静态方法和属性(set,delete,util)
-- `instance/init`文件主要是合并配置,初始化声明周期,事件,渲染,状态等
+- `z/init`文件主要是合并配置,初始化声明周期,事件,渲染,状态等
 
 ## Vue 实例挂载的实现
 
@@ -51,3 +51,6 @@
 - 组件自己初始化是不需要传 el,它是自己接管了$mount过程(child.$mount)，它最终会调用 mountComponent，进而执行`vm._render()`方法，执行完 vm.\_render 生成 vnode 后，会去执行`vm._update`渲染 vnode，`vm._update`中使用`activeInstance`保存当前上下文的 vue 实例，它暴露给了`createComponentInstanceForVnode`当作参数传入，因为 vue 整个初始化是一个深度遍历的过程，在实例化子组件时，需要知道当前上下文的 vue 实例是什么，并把它作为自组件的父 vue 实例。子组件实例化会先调用`initInternalComponent(vm, options)`合并 options,将 parent 存储在 vm.$options中，用来保留当前vm的父实例，并且将当前vm存储到父实例的$children 中。
 - 在`vm._update`过程中，将`activeInstance`赋值给`prevActiveInstance`，当 vm 实例完成他的所有子树的 patch 或者 update 过程后，`activeInstance`会回到它的父实例。`createComponentInstanceForVnode`深度遍历过程中，在实例化子组件的时候传入当前子组件的父实例，并在\_init 中保存整个父子关系，然后回到\_update,最后调用**patch**渲染 vndode
 - 负责渲染 dom 的是 createElm,这里会判断传入的节点是组件还是普通 vnode，当是组件时，会重复组件初始化的逻辑，通过递归的方式完整的构建整个组件树。在组件完成整个 patch 后，会通过`insert`完成组件的 dom 插入，如果 patch 过程中又创建了组件，dom 插入顺序是先子后父。
+
+### 合并配置
+
